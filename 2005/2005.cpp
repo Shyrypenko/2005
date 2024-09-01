@@ -1,64 +1,55 @@
 #include <iostream>
 #include <string>
-#include <algorithm> // Для std::gcd в функции работы с дробями
+#include <algorithm>
 
-// Структура для описания точки в двумерной системе координат
 struct Point {
     double x;
     double y;
 };
 
-// Структура для описания прямоугольника
 struct Rectangle {
     Point topLeft;
     Point bottomRight;
 };
 
-// Структура для описания человека
 struct Person {
     std::string name;
     int age;
     std::string address;
 };
 
-// Структура для описания дроби
 struct Fraction {
     int numerator;
     int denominator;
 };
 
-// Функция для проверки, параллельна ли прямая, проходящая через две точки, осям
 void check_parallel(const Point& p1, const Point& p2) {
     if (p1.x == p2.x) {
-        std::cout << "Прямая параллельна оси ординат (y-ось)." << std::endl;
+        std::cout << "ГЏГ°ГїГ¬Г Гї ГЇГ Г°Г Г«Г«ГҐГ«ГјГ­Г  Г®Г±ГЁ Г®Г°Г¤ГЁГ­Г ГІ (y-Г®Г±Гј)." << std::endl;
     }
     else if (p1.y == p2.y) {
-        std::cout << "Прямая параллельна оси абсцисс (x-ось)." << std::endl;
+        std::cout << "ГЏГ°ГїГ¬Г Гї ГЇГ Г°Г Г«Г«ГҐГ«ГјГ­Г  Г®Г±ГЁ Г ГЎГ±Г¶ГЁГ±Г± (x-Г®Г±Гј)." << std::endl;
     }
     else {
-        std::cout << "Прямая не параллельна ни одной из осей." << std::endl;
+        std::cout << "ГЏГ°ГїГ¬Г Гї Г­ГҐ ГЇГ Г°Г Г«Г«ГҐГ«ГјГ­Г  Г­ГЁ Г®Г¤Г­Г®Г© ГЁГ§ Г®Г±ГҐГ©." << std::endl;
     }
 }
 
-// Функция для проверки попадания точки в прямоугольник
 bool is_point_in_rectangle(const Rectangle& rect, const Point& pt) {
     return (pt.x >= rect.topLeft.x && pt.x <= rect.bottomRight.x &&
         pt.y <= rect.topLeft.y && pt.y >= rect.bottomRight.y);
 }
 
-// Функция для заполнения данных о человеке
 void fill_person(Person& person, const std::string& name, int age, const std::string& address) {
     person.name = name;
     person.age = age;
     person.address = address;
 }
 
-// Функция для вывода данных о человеке
 void print_person(const Person& person) {
-    std::cout << "Имя: " << person.name << "\nВозраст: " << person.age << "\nАдрес: " << person.address << std::endl;
+    std::cout << "Г€Г¬Гї: " << person.name << "\nГ‚Г®Г§Г°Г Г±ГІ: " << person.age << "\nГЂГ¤Г°ГҐГ±: " << person.address << std::endl;
 }
 
-// Нормализация прямоугольника
 void normalize_rectangle(Rectangle& rect) {
     if (rect.topLeft.x > rect.bottomRight.x) {
         std::swap(rect.topLeft.x, rect.bottomRight.x);
@@ -68,7 +59,6 @@ void normalize_rectangle(Rectangle& rect) {
     }
 }
 
-// Перемещение прямоугольника
 void move_rectangle(Rectangle& rect, double dx, double dy) {
     rect.topLeft.x += dx;
     rect.bottomRight.x += dx;
@@ -76,20 +66,17 @@ void move_rectangle(Rectangle& rect, double dx, double dy) {
     rect.bottomRight.y += dy;
 }
 
-// Изменение размера прямоугольника
 void resize_rectangle(Rectangle& rect, double dw, double dh) {
     rect.bottomRight.x += dw;
     rect.bottomRight.y -= dh;
 }
 
-//Сокращения дроби
 void reduce_fraction(Fraction& frac) {
     int gcd = std::gcd(frac.numerator, frac.denominator);
     frac.numerator /= gcd;
     frac.denominator /= gcd;
 }
 
-//Сложение
 Fraction add_fractions(const Fraction& f1, const Fraction& f2) {
     Fraction result;
     result.numerator = f1.numerator * f2.denominator + f2.numerator * f1.denominator;
@@ -98,7 +85,6 @@ Fraction add_fractions(const Fraction& f1, const Fraction& f2) {
     return result;
 }
 
-//Вычитание
 Fraction subtract_fractions(const Fraction& f1, const Fraction& f2) {
     Fraction result;
     result.numerator = f1.numerator * f2.denominator - f2.numerator * f1.denominator;
@@ -107,7 +93,6 @@ Fraction subtract_fractions(const Fraction& f1, const Fraction& f2) {
     return result;
 }
 
-//Умножение дробей
 Fraction multiply_fractions(const Fraction& f1, const Fraction& f2) {
     Fraction result;
     result.numerator = f1.numerator * f2.numerator;
@@ -116,7 +101,6 @@ Fraction multiply_fractions(const Fraction& f1, const Fraction& f2) {
     return result;
 }
 
-//Деление дробей
 Fraction divide_fractions(const Fraction& f1, const Fraction& f2) {
     Fraction result;
     result.numerator = f1.numerator * f2.denominator;
@@ -125,7 +109,6 @@ Fraction divide_fractions(const Fraction& f1, const Fraction& f2) {
     return result;
 }
 
-//Функция для вывода дроби
 void print_fraction(const Fraction& frac) {
     std::cout << frac.numerator << "/" << frac.denominator << std::endl;
 }
@@ -140,29 +123,29 @@ int main() {
     Rectangle rect = { {0.0, 5.0}, {5.0, 0.0} };
     Point pt = { 3.0, 3.0 };
     if (is_point_in_rectangle(rect, pt)) {
-        std::cout << "Точка внутри прямоугольника." << std::endl;
+        std::cout << "Г’Г®Г·ГЄГ  ГўГ­ГіГІГ°ГЁ ГЇГ°ГїГ¬Г®ГіГЈГ®Г«ГјГ­ГЁГЄГ ." << std::endl;
     }
     else {
-        std::cout << "Точка вне прямоугольника." << std::endl;
+        std::cout << "Г’Г®Г·ГЄГ  ГўГ­ГҐ ГЇГ°ГїГ¬Г®ГіГЈГ®Г«ГјГ­ГЁГЄГ ." << std::endl;
     }
 
     //3
     Person person;
-    fill_person(person, "Иван Иванов", 30, "ул. Пушкина, д. 1");
+    fill_person(person, "Г€ГўГ Г­ Г€ГўГ Г­Г®Гў", 30, "ГіГ«. ГЏГіГёГЄГЁГ­Г , Г¤. 1");
     print_person(person);
 
     //4
     Rectangle rect2 = { {2.0, 4.0}, {5.0, 1.0} };
     normalize_rectangle(rect2);
-    std::cout << "Нормализованный прямоугольник: (" << rect2.topLeft.x << ", " << rect2.topLeft.y
+    std::cout << "ГЌГ®Г°Г¬Г Г«ГЁГ§Г®ГўГ Г­Г­Г»Г© ГЇГ°ГїГ¬Г®ГіГЈГ®Г«ГјГ­ГЁГЄ: (" << rect2.topLeft.x << ", " << rect2.topLeft.y
         << ") - (" << rect2.bottomRight.x << ", " << rect2.bottomRight.y << ")" << std::endl;
 
     move_rectangle(rect2, 1.0, -1.0);
-    std::cout << "Перемещённый прямоугольник: (" << rect2.topLeft.x << ", " << rect2.topLeft.y
+    std::cout << "ГЏГҐГ°ГҐГ¬ГҐГ№ВёГ­Г­Г»Г© ГЇГ°ГїГ¬Г®ГіГЈГ®Г«ГјГ­ГЁГЄ: (" << rect2.topLeft.x << ", " << rect2.topLeft.y
         << ") - (" << rect2.bottomRight.x << ", " << rect2.bottomRight.y << ")" << std::endl;
 
     resize_rectangle(rect2, 2.0, 1.0);
-    std::cout << "Изменённый размер прямоугольника: (" << rect2.topLeft.x << ", " << rect2.topLeft.y
+    std::cout << "Г€Г§Г¬ГҐГ­ВёГ­Г­Г»Г© Г°Г Г§Г¬ГҐГ° ГЇГ°ГїГ¬Г®ГіГЈГ®Г«ГјГ­ГЁГЄГ : (" << rect2.topLeft.x << ", " << rect2.topLeft.y
         << ") - (" << rect2.bottomRight.x << ", " << rect2.bottomRight.y << ")" << std::endl;
 
     //5
@@ -174,9 +157,9 @@ int main() {
     Fraction product = multiply_fractions(f1, f2);
     Fraction quotient = divide_fractions(f1, f2);
 
-    std::cout << "Сумма: "; print_fraction(sum);
-    std::cout << "Разность: "; print_fraction(difference);
-    std::cout << "Произведение: "; print_fraction(product);
-    std::cout << "Частное: "; print_fraction(quotient);
+    std::cout << "Г‘ГіГ¬Г¬Г : "; print_fraction(sum);
+    std::cout << "ГђГ Г§Г­Г®Г±ГІГј: "; print_fraction(difference);
+    std::cout << "ГЏГ°Г®ГЁГ§ГўГҐГ¤ГҐГ­ГЁГҐ: "; print_fraction(product);
+    std::cout << "Г—Г Г±ГІГ­Г®ГҐ: "; print_fraction(quotient);
 
     return 0;
